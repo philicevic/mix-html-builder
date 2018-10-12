@@ -14,6 +14,14 @@
   ],
   "author": "Philipp Ehrenberg",
   "license": "MIT",
+  "homepage": "https://www.npmjs.com/package/mix-html-builder",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/philicevic/mix-html-builder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/philicevic/mix-html-builder/issues"
+  },
   "dependencies": {
     "html-webpack-plugin": "^3.2.0"
   }
