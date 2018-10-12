@@ -3,7 +3,7 @@ let mix = require('laravel-mix');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 class HtmlBuilder {
-    register(htmlRoot, output, partialRoot = './src/Pages') {
+    register(htmlRoot, output, partialRoot = './src/partials') {
         this.htmlRoot = htmlRoot;
         this.output = output;
         this.partialRoot = partialRoot;
