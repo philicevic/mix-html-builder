@@ -1,6 +1,6 @@
 {
   "name": "mix-html-builder",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A quick laravel mix extension to build up html templates from partials.",
   "main": "mix-html-builder.js",
   "scripts": {
@@ -16,8 +16,8 @@
   "license": "MIT",
   "homepage": "https://www.npmjs.com/package/mix-html-builder",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/philicevic/mix-html-builder.git"
+    "type": "git",
+    "url": "https://github.com/philicevic/mix-html-builder.git"
   },
   "bugs": {
     "url": "https://github.com/philicevic/mix-html-builder/issues"
