@@ -3,10 +3,26 @@ let mix = require('laravel-mix');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 class HtmlBuilder {
-    register(htmlRoot, output, partialRoot = './src/partials') {
-        this.htmlRoot = htmlRoot;
-        this.output = output;
-        this.partialRoot = partialRoot;
+    register(input = {}) {
+        if (!input.htmlRoot) {
+            this.htmlRoot = './src/index.html';
+        } else {
+            this.htmlRoot = input.htmlRoot;
+        }
+
+        if (!input.output) {
+            this.output = 'index.html'
+        } else {
+            this.output = input.output;
+        }
+
+        if (!input.partialRoot) {
+            this.partialRoot = './src/partials'
+        } else {
+            this.partialRoot = input.partialRoot;
+        }
+
+        this.inject = input.inject;
     }
 
     dependencies() {
@@ -38,6 +54,7 @@ class HtmlBuilder {
         return new HtmlWebpackPlugin({
             filename: this.output,
             template: this.htmlRoot,
+            inject: this.inject,
         });
     }
 }
