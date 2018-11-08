@@ -1,6 +1,6 @@
 {
   "name": "mix-html-builder",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A quick laravel mix extension to build up html templates from partials.",
   "main": "mix-html-builder.js",
   "scripts": {
