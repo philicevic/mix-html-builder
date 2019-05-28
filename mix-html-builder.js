@@ -22,9 +22,14 @@ class HtmlBuilder {
             this.partialRoot = input.partialRoot;
         }
 
+        if (!input.minify) {
+            this.minify = 'auto'
+        } else {
+            this.minify = input.minify;
+        }
+
         this.inject = input.inject;
-        
-        this.minify = input.minify;
+ 
     }
 
     dependencies() {
@@ -57,6 +62,7 @@ class HtmlBuilder {
             filename: this.output,
             template: this.htmlRoot,
             inject: this.inject,
+            minify: this.minify
         });
     }
 }
