@@ -23,6 +23,8 @@ class HtmlBuilder {
         }
 
         this.inject = input.inject;
+        
+        this.minify = input.minify;
     }
 
     dependencies() {

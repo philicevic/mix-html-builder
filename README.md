@@ -15,7 +15,8 @@ In your `webpack.mix.js` just use `mix.buildHtml()`. If you want to use the defa
 mix.buildHtml({
     htmlRoot: './src/index.html', // Your html root file
     output: './out/index.html', // The html output file
-    partialRoot: './src/partials'    // OPTIONAL: default partial path
+    partialRoot: './src/partials',    // OPTIONAL: default partial path
+    minify: true
 });
 ```
 
@@ -27,6 +28,7 @@ Name | Type | Default | Description
 `partialRoot` | `{String}` | `'./src/partials'` |  Default path for html partial files
 `output` | `{String}` | `'index.html'` |  How your output html file should be named
 `inject`* | `{Boolean}` | `false` |  Whether or not your css and javascript files should automatically included in your output
+`minify` | `{Boolean}` | `true` if `mode` is `'production'`, otherwise `false` |  To disable minification during production mode set the minify option to `false`.
 
 **\*KNOWN ISSUE**:
 Due to an [issue in the laravel-mix core](https://github.com/JeffreyWay/laravel-mix/issues/1717) the `src` of script tag will have a leading double slash, which kills the functionality of it. Linking the css file yet works fine. I included the option as an experimental feature and I am working on a workaround to fix this until the development of mix will continue.
