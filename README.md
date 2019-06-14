@@ -14,7 +14,7 @@ In your `webpack.mix.js` just use `mix.buildHtml()`. If you want to use the defa
 ```
 mix.buildHtml({
     htmlRoot: './src/index.html', // Your html root file
-    output: './out/index.html', // The html output file
+    output: 'dist', // The html output folder
     partialRoot: './src/partials'    // OPTIONAL: default partial path
 });
 ```
