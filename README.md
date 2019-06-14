@@ -9,10 +9,10 @@ npm i -D mix-html-builder
 
 ## Usage
 
-In your `webpack.mix.js` just use `mix.buildHtml()`. If you want to use the default configuration, you don't need to pass any arguments. Otherwise pass an object, like this:
+In your `webpack.mix.js` just use `mix.html()`. If you want to use the default configuration, you don't need to pass any arguments. Otherwise pass an object, like this:
 
 ```
-mix.buildHtml({
+mix.html({
     htmlRoot: './src/index.html', // Your html root file
     output: 'dist', // The html output folder
     partialRoot: './src/partials',    // default partial path
@@ -45,7 +45,7 @@ With this package you can include other template files in your root html file.
 <h1>Headline</h1>
 <include src="text.html"></include>
 ```
-Note that it will search for partials in `/src/partials` by default - you could change that by editing the third parameter of `mix.buildHtml()` or you can just use a relative path in the include tag, like this:
+Note that it will search for partials in `/src/partials` by default - you can change that by passing a `partialRoot`-option to `mix.html()` or you can just use a relative path in the include tag, like this:
 ```
 <h1>Headline</h1>
 <include src="../other-partials-folder/text.html"></include>
