@@ -24,7 +24,20 @@ class HtmlBuilder {
             this.partialRoot = input.partialRoot;
         }
 
+        if (typeof input.minify === 'undefined') {
+            this.minify = {
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                useShortDoctype: true
+            };
+        } else {
+            this.minify = input.minify;
+        }
+
         this.inject = input.inject;
+ 
     }
 
     dependencies() {
@@ -78,7 +91,8 @@ class HtmlBuilder {
                 new HtmlWebpackPlugin({
                     filename: this.output + '/' + filename,
                     template: file,
-                    inject: this.inject
+                    inject: this.inject,
+                    minify: this.minify
                 })
             );
         });

@@ -15,7 +15,10 @@ In your `webpack.mix.js` just use `mix.buildHtml()`. If you want to use the defa
 mix.buildHtml({
     htmlRoot: './src/index.html', // Your html root file
     output: 'dist', // The html output folder
-    partialRoot: './src/partials'    // OPTIONAL: default partial path
+    partialRoot: './src/partials',    // default partial path
+    minify: {
+        removeComments: true
+    }
 });
 ```
 
@@ -27,6 +30,7 @@ Name | Type | Default | Description
 `partialRoot` | `{String}` | `'./src/partials'` |  Default path for html partial files
 `output` | `{String}` | `'dist'` |  The folder where your output files should be saved
 `inject`* | `{Boolean}` | `false` |  Whether or not your css and javascript files should automatically included in your output
+`minify` | `{Object}` | see [minify](#Minification) section |  An object with minify-options. See [minify](#Minification) for more information.
 
 **\*KNOWN ISSUE**:
 Due to an [issue in the laravel-mix core](https://github.com/JeffreyWay/laravel-mix/issues/1717) the `src` of script tag will have a leading double slash, which kills the functionality of it. Linking the css file yet works fine. I included the option as an experimental feature and I am working on a workaround to fix this until the development of mix will continue.
@@ -63,4 +67,22 @@ When you run mix it will automatically generate `/dist/index.html` like this:
 <p>
     I am a wonderful and useless text!
 </p>
+```
+
+### Minification
+
+You have the possibility to minify your html code according to the [kangax/html-minifier](https://github.com/kangax/html-minifier#options-quick-reference) package. Just add any option you need, it will be passed to the minifier. If you want to remove minification, just set its value to `false`;
+
+#### Default value
+
+The default value of this field is the following object:
+
+```
+{
+    removeComments: true,
+    removeRedundantAttributes: true,
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    useShortDoctype: true
+}
 ```
