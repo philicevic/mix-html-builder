@@ -60,3 +60,4 @@ class HtmlBuilder {
 }
 
 mix.extend('buildHtml', new HtmlBuilder());
+mix.extend('html', new HtmlBuilder());
