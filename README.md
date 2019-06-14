@@ -23,9 +23,9 @@ mix.buildHtml({
 
 Name | Type | Default | Description
 --|---|---|--
-`htmlRoot` | `{String}` | `'./src/index.html'` |  Your html root file
+`htmlRoot` | `{String|Array}` | `'./src/index.html'` |  Your html root file or an array of files
 `partialRoot` | `{String}` | `'./src/partials'` |  Default path for html partial files
-`output` | `{String}` | `'index.html'` |  How your output html file should be named
+`output` | `{String}` | `'dist'` |  The folder where your output files should be saved
 `inject`* | `{Boolean}` | `false` |  Whether or not your css and javascript files should automatically included in your output
 
 **\*KNOWN ISSUE**:
@@ -57,7 +57,7 @@ Note that it will search for partials in `/src/partials` by default - you could 
 
 #### Output
 
-When you run mix it will automatically generate `/out/index.html` like this:
+When you run mix it will automatically generate `/dist/index.html` like this:
 ```
 <h1>Headline</h1>
 <p>

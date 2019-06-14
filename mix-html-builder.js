@@ -11,7 +11,7 @@ class HtmlBuilder {
         }
 
         if (!input.output) {
-            this.output = 'index.html'
+            this.output = 'dist'
         } else {
             this.output = input.output;
         }
@@ -51,11 +51,28 @@ class HtmlBuilder {
     }
 
     webpackPlugins() {
-        return new HtmlWebpackPlugin({
-            filename: this.output,
-            template: this.htmlRoot,
-            inject: this.inject,
-        });
+        var Plugins = [];
+        if (Array.isArray(this.htmlRoot)) {
+            this.htmlRoot.forEach(function(htmlRoot) {
+                var filename = htmlRoot.substring(htmlRoot.lastIndexOf('/') + 1);
+                Plugins.push(new HtmlWebpackPlugin({
+                    filename: this.output + '/' + filename,
+                    template: htmlRoot,
+                    inject: this.inject
+                }));
+            }, this)
+        } else {
+            var filename = this.htmlRoot.substring(this.htmlRoot.lastIndexOf('/') + 1);
+            Plugins.push(
+                new HtmlWebpackPlugin({
+                    filename: this.output + '/' + filename,
+                    template: this.htmlRoot,
+                    inject: this.inject
+                })
+            );
+        }
+
+        return Plugins;
     }
 }
 
