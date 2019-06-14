@@ -23,7 +23,7 @@ mix.buildHtml({
 
 Name | Type | Default | Description
 --|---|---|--
-`htmlRoot` | `{String\|Array}` | `'./src/index.html'` |  Your html root file or an array of files
+`htmlRoot` | `{String\|Array}` | `'./src/index.html'` |  Your html root file or an array of files. You can also use patterns to use multiple files.
 `partialRoot` | `{String}` | `'./src/partials'` |  Default path for html partial files
 `output` | `{String}` | `'dist'` |  The folder where your output files should be saved
 `inject`* | `{Boolean}` | `false` |  Whether or not your css and javascript files should automatically included in your output
