@@ -23,6 +23,8 @@
     "url": "https://github.com/philicevic/mix-html-builder/issues"
   },
   "dependencies": {
-    "html-webpack-plugin": "^3.2.0"
+    "html-webpack-plugin": "^3.2.0",
+    "filename-regex": "^2.0.1",
+    "glob": "^7.1.3"
   }
 }

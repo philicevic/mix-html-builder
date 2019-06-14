@@ -1,4 +1,6 @@
-let mix = require('laravel-mix');
+var mix = require('laravel-mix');
+var regex = require('filename-regex');
+var glob = require("glob")
 
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -11,7 +13,7 @@ class HtmlBuilder {
         }
 
         if (!input.output) {
-            this.output = 'index.html'
+            this.output = 'dist'
         } else {
             this.output = input.output;
         }
@@ -34,6 +36,8 @@ class HtmlBuilder {
 
     dependencies() {
         return [
+            'filename-regex',
+            'glob',
             'html-loader',
             'posthtml',
             'posthtml-include',
@@ -58,13 +62,38 @@ class HtmlBuilder {
     }
 
     webpackPlugins() {
-        return new HtmlWebpackPlugin({
-            filename: this.output,
-            template: this.htmlRoot,
-            inject: this.inject,
-            minify: this.minify
+        let filelist = [];
+        let Plugins = [];
+
+        if (Array.isArray(this.htmlRoot)) {
+            this.htmlRoot.forEach((htmlRoot) => {
+                let files = glob.sync(htmlRoot);
+                files.forEach((file) => {
+                    filelist.push(file);
+                });
+            })
+        } else {
+            let files = glob.sync(this.htmlRoot);
+            files.forEach((file) => {
+                filelist.push(file);
+            });
+        }
+
+        filelist.forEach((file) => {
+            var filename = file.match(regex())[0];
+            Plugins.push(
+                new HtmlWebpackPlugin({
+                    filename: this.output + '/' + filename,
+                    template: file,
+                    inject: this.inject,
+                    minify: this.minify
+                })
+            );
         });
+
+        return Plugins;
     }
 }
 
 mix.extend('buildHtml', new HtmlBuilder());
+mix.extend('html', new HtmlBuilder());
