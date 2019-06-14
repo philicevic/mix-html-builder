@@ -24,8 +24,14 @@ class HtmlBuilder {
             this.partialRoot = input.partialRoot;
         }
 
-        if (!input.minify) {
-            this.minify = 'auto'
+        if (typeof input.minify === 'undefined') {
+            this.minify = {
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                useShortDoctype: true
+            };
         } else {
             this.minify = input.minify;
         }
