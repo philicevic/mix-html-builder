@@ -12,6 +12,9 @@ npm i -D mix-html-builder
 In your `webpack.mix.js` just use `mix.html()`. If you want to use the default configuration, you don't need to pass any arguments. Otherwise pass an object, like this:
 
 ```
+# Require the extension in your config file
+require('mix-html-builder');
+
 mix.html({
     htmlRoot: './src/index.html', // Your html root file
     output: 'dist', // The html output folder
