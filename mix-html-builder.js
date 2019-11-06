@@ -99,6 +99,12 @@ class HtmlBuilder {
 
         return Plugins;
     }
+
+    webpackConfig(config) {
+        // Fixes https://github.com/JeffreyWay/laravel-mix/issues/1717
+        // To be removed in the future
+        config.output.publicPath = '';
+    }
 }
 
 mix.extend('buildHtml', new HtmlBuilder());

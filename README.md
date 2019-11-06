@@ -32,11 +32,8 @@ Name | Type | Default | Description
 `htmlRoot` | `{String\|Array}` | `'./src/index.html'` |  Your html root file or an array of files. You can also use patterns to use multiple files.
 `partialRoot` | `{String}` | `'./src/partials'` |  Default path for html partial files
 `output` | `{String}` | `'dist'` |  The folder where your output files should be saved
-`inject`* | `{Boolean}` | `false` |  Whether or not your css and javascript files should automatically included in your output
+`inject` | `{Boolean}` | `false` |  Whether or not your css and javascript files should automatically included in your output
 `minify` | `{Object}` | see [minify](#Minification) section |  An object with minify-options. See [minify](#Minification) for more information.
-
-**\*KNOWN ISSUE**:
-Due to an [issue in the laravel-mix core](https://github.com/JeffreyWay/laravel-mix/issues/1717) the `src` of script tag will have a leading double slash, which kills the functionality of it. Linking the css file yet works fine. I included the option as an experimental feature and I am working on a workaround to fix this until the development of mix will continue.
 
 ### Include partials
 
