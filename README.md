@@ -1,5 +1,5 @@
 # mix-html-builder
-A quick laravel mix extension to build up html templates from partials.
+A quick laravel mix extension to build up html templates from partials and layouts.
 
 ## Installation
 
@@ -19,6 +19,7 @@ mix.html({
     htmlRoot: './src/index.html', // Your html root file
     output: 'dist', // The html output folder
     partialRoot: './src/partials',    // default partial path
+    layoutRoot: './src/layouts',    // default partial path
     minify: {
         removeComments: true
     }
@@ -30,6 +31,7 @@ mix.html({
 Name | Type | Default | Description
 --|---|---|--
 `htmlRoot` | `{String\|Array}` | `'./src/index.html'` |  Your html root file or an array of files. You can also use patterns to use multiple files.
+`layoutRoot` | `{String}` | `'./src/layouts'` |  Default path for html layout files
 `partialRoot` | `{String}` | `'./src/partials'` |  Default path for html partial files
 `output` | `{String}` | `'dist'` |  The folder where your output files should be saved
 `inject` | `{Boolean}` | `false` |  Whether or not your css and javascript files should automatically included in your output
@@ -67,6 +69,50 @@ When you run mix it will automatically generate `/dist/index.html` like this:
 <p>
     I am a wonderful and useless text!
 </p>
+```
+
+### Extend layouts
+
+You can also use layout files.
+
+#### HTML Root
+
+Inside of your root file you can define data that should be passed to the layout. Use the `<block>` tag for this.
+
+`/src/index.html`:
+```
+<extend src="layout.html">
+    <block name="title">Page title</block>
+</extend>
+```
+Note that it will search for layouts in `/src/layouts` by default - you can change that by passing a `layoutRoot`-option to `mix.html()` or you can just use a relative path in the include tag, like this:
+```
+<extend src="../other-layouts-folder/layout.html">
+    <block name="title">Page title</block>
+</extend>
+```
+
+#### Layout
+`/src/layouts/layout.html`:
+```
+<body>
+    <h1><block name="title" /></h1>
+    <p class="content">
+        I am quality content.
+    </p>
+</body>
+```
+
+#### Output
+
+When you run mix it will automatically generate `/dist/index.html` like this:
+```
+<body>
+    <h1>Page title</h1>
+    <p class="content">
+        I am quality content.
+    </p>
+</body>
 ```
 
 ### Minification

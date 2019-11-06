@@ -24,6 +24,12 @@ class HtmlBuilder {
             this.partialRoot = input.partialRoot;
         }
 
+        if (!input.layoutRoot) {
+            this.layoutRoot = './src/layouts'
+        } else {
+            this.layoutRoot = input.layoutRoot;
+        }
+
         if (typeof input.minify === 'undefined') {
             this.minify = {
                 removeComments: true,
@@ -46,6 +52,7 @@ class HtmlBuilder {
             'glob',
             'html-loader',
             'posthtml',
+            'posthtml-extend',
             'posthtml-include',
             'posthtml-loader'
         ];
@@ -59,7 +66,8 @@ class HtmlBuilder {
                     loader: 'posthtml-loader',
                     options: {
                         plugins: [
-                            require('posthtml-include')({ root: this.partialRoot })
+                            require('posthtml-include')({ root: this.partialRoot }),
+                            require('posthtml-extend')({ root: this.layoutRoot })
                         ]
                     }
                 }
