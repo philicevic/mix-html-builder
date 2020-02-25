@@ -41,6 +41,8 @@ Name | Type | Default | Description
 
 With this package you can include other template files in your root html file.
 
+`mix-html-builder` uses [posthtml-include](https://github.com/posthtml/posthtml-include) to include partials. More information about it is available in its docs.
+
 #### HTML Root
 `/src/index.html`:
 ```
@@ -73,7 +75,7 @@ When you run mix it will automatically generate `/dist/index.html` like this:
 
 ### Extend layouts
 
-You can also use layout files.
+You can also use layout files. This package uses [posthtml-extend](https://github.com/posthtml/posthtml-extend) for this, so head over to its docs if you want to get more information about options here.
 
 #### HTML Root
 
@@ -81,15 +83,15 @@ Inside of your root file you can define data that should be passed to the layout
 
 `/src/index.html`:
 ```
-<extend src="layout.html">
+<extends src="layout.html">
     <block name="title">Page title</block>
-</extend>
+</extends>
 ```
 Note that it will search for layouts in `/src/layouts` by default - you can change that by passing a `layoutRoot`-option to `mix.html()` or you can just use a relative path in the include tag, like this:
 ```
-<extend src="../other-layouts-folder/layout.html">
+<extends src="../other-layouts-folder/layout.html">
     <block name="title">Page title</block>
-</extend>
+</extends>
 ```
 
 #### Layout
