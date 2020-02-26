@@ -1,8 +1,9 @@
-var mix = require('laravel-mix');
-var regex = require('filename-regex');
-var glob = require("glob")
+let mix = require('laravel-mix');
+let glob = require("glob");
+let globParent = require("glob-parent");
+let path = require('path');
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
 
 class HtmlBuilder {
     register(input = {}) {
@@ -43,7 +44,7 @@ class HtmlBuilder {
         }
 
         this.inject = input.inject;
- 
+
     }
 
     dependencies() {
@@ -79,22 +80,14 @@ class HtmlBuilder {
         let filelist = [];
         let Plugins = [];
 
-        if (Array.isArray(this.htmlRoot)) {
-            this.htmlRoot.forEach((htmlRoot) => {
-                let files = glob.sync(htmlRoot);
-                files.forEach((file) => {
-                    filelist.push(file);
-                });
-            })
-        } else {
-            let files = glob.sync(this.htmlRoot);
-            files.forEach((file) => {
-                filelist.push(file);
-            });
-        }
+        let files = glob.sync(this.htmlRoot);
+        files.forEach((file) => {
+            filelist.push(file);
+        });
 
         filelist.forEach((file) => {
-            var filename = file.match(regex())[0];
+            let htmlRootDir = globParent(this.htmlRoot);
+            let filename = path.relative(htmlRootDir, file);
             Plugins.push(
                 new HtmlWebpackPlugin({
                     filename: this.output + '/' + filename,

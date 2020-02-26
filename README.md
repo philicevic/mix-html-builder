@@ -16,7 +16,7 @@ In your `webpack.mix.js` just use `mix.html()`. If you want to use the default c
 require('mix-html-builder');
 
 mix.html({
-    htmlRoot: './src/index.html', // Your html root file
+    htmlRoot: './src/index.html', // Your html root file(s)
     output: 'dist', // The html output folder
     partialRoot: './src/partials',    // default partial path
     layoutRoot: './src/layouts',    // default partial path
@@ -30,7 +30,7 @@ mix.html({
 
 Name | Type | Default | Description
 --|---|---|--
-`htmlRoot` | `{String\|Array}` | `'./src/index.html'` |  Your html root file or an array of files. You can also use patterns to use multiple files.
+`htmlRoot` | `{String}` | `'./src/index.html'` |  Your html root file. You can also use [glob](https://github.com/isaacs/node-glob#readme) patterns to use multiple files.
 `layoutRoot` | `{String}` | `'./src/layouts'` |  Default path for html layout files
 `partialRoot` | `{String}` | `'./src/partials'` |  Default path for html partial files
 `output` | `{String}` | `'dist'` |  The folder where your output files should be saved

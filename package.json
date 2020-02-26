@@ -23,12 +23,12 @@
     "url": "https://github.com/philicevic/mix-html-builder/issues"
   },
   "dependencies": {
-    "html-webpack-plugin": "^3.2.0",
-    "filename-regex": "^2.0.1",
     "glob": "^7.1.3",
+    "glob-parent": "^5.1.0",
+    "html-webpack-plugin": "^3.2.0",
     "posthtml": "^0.12.0",
-    "posthtml-include": "^1.3.2",
     "posthtml-extend": "^0.3.0",
+    "posthtml-include": "^1.3.2",
     "posthtml-loader": "^1.0.2"
   },
   "peerDependencies": {
