@@ -10,7 +10,8 @@
     "laravel-mix",
     "mix",
     "posthtml",
-    "posthtml-include"
+    "posthtml-include",
+    "posthtml-extend"
   ],
   "author": "Philipp Ehrenberg",
   "license": "MIT",
