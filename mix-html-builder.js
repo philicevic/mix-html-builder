@@ -14,19 +14,19 @@ class HtmlBuilder {
         }
 
         if (!input.output) {
-            this.output = 'dist'
+            this.output = 'dist';
         } else {
             this.output = input.output;
         }
 
         if (!input.partialRoot) {
-            this.partialRoot = './src/partials'
+            this.partialRoot = './src/partials';
         } else {
             this.partialRoot = input.partialRoot;
         }
 
         if (!input.layoutRoot) {
-            this.layoutRoot = './src/layouts'
+            this.layoutRoot = './src/layouts';
         } else {
             this.layoutRoot = input.layoutRoot;
         }
