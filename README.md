@@ -43,11 +43,16 @@ With this package you can include other template files in your root html file.
 
 `mix-html-builder` uses [posthtml-include](https://github.com/posthtml/posthtml-include) to include partials. More information about it is available in its docs.
 
+Since `posthtml-include` v1.4 the passing of locals is supported, so we can pass data to our partials.
+To do that, you can add a json inside the `locals` attribute as seen in the examples below.
+
 #### HTML Root
 `/src/index.html`:
 ```
 <h1>Headline</h1>
-<include src="text.html"></include>
+<include src="text.html" locals='{
+    "author": "John Doe"
+}'></include>
 ```
 Note that it will search for partials in `/src/partials` by default - you can change that by passing a `partialRoot`-option to `mix.html()` or you can just use a relative path in the include tag, like this:
 ```
@@ -59,7 +64,7 @@ Note that it will search for partials in `/src/partials` by default - you can ch
 `/src/partials/text.html`:
 ```
 <p>
-    I am a wonderful and useless text!
+    I am a wonderful and useless text, written by {{ author }}!
 </p>
 ```
 
@@ -69,7 +74,7 @@ When you run mix it will automatically generate `/dist/index.html` like this:
 ```
 <h1>Headline</h1>
 <p>
-    I am a wonderful and useless text!
+    I am a wonderful and useless text, written by John Doe!
 </p>
 ```
 
