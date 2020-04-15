@@ -36,8 +36,8 @@ Name | Type | Default | Description
 `output` | `{String}` | `'dist'` |  The folder where your output files should be saved
 `inject` | `{Boolean}` | `false` |  Whether or not your css and javascript files should automatically included in your output
 `minify` | `{Object}` | see [minify](#Minification) section |  An object with minify-options. See [minify](#Minification) for more information.
-`postHtmlInclude` | `{Object}` |  `root: this.partialRoot` | See [posthtml-include](https://github.com/posthtml/posthtml-include#options) for options
-`postHtmlExtend` | `{Object}` |  `root: this.layoutRoot` | See [posthtml-extend](https://github.com/posthtml/posthtml-extend#options) for options
+`postHtmlInclude` | `{Object}` |  `{ root: this.partialRoot }` | See [posthtml-include](https://github.com/posthtml/posthtml-include#options) for options
+`postHtmlExtend` | `{Object}` |  `{ root: this.layoutRoot }` | See [posthtml-extend](https://github.com/posthtml/posthtml-extend#options) for options
 
 ### Include partials
 

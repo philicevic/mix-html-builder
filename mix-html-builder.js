@@ -48,7 +48,10 @@ class HtmlBuilder {
                 root: this.partialRoot 
             }
         } else {
-            this.postHtmlInclude = {...input.postHtmlInclude, root: this.partialRoot};
+            this.postHtmlInclude = {
+                ...input.postHtmlInclude, 
+                root: this.partialRoot
+            };
         }
 
         if (typeof input.postHtmlExtend === 'undefined') {
@@ -56,7 +59,10 @@ class HtmlBuilder {
                 root: this.layoutRoot 
             }
         } else {
-            this.postHtmlExtend = {...input.postHtmlExtend, root: this.layoutRoot };
+            this.postHtmlExtend = {
+                ...input.postHtmlExtend, 
+                root: this.layoutRoot 
+            };
         }
 
         this.inject = input.inject;
