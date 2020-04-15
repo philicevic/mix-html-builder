@@ -43,6 +43,22 @@ class HtmlBuilder {
             this.minify = input.minify;
         }
 
+        if (typeof input.postHtmlInclude === 'undefined') {
+            this.postHtmlInclude = { 
+                root: this.partialRoot 
+            }
+        } else {
+            this.postHtmlInclude = {...input.postHtmlInclude, root: this.partialRoot};
+        }
+
+        if (typeof input.postHtmlExtend === 'undefined') {
+            this.postHtmlExtend = { 
+                root: this.layoutRoot 
+            }
+        } else {
+            this.postHtmlExtend = {...input.postHtmlExtend, root: this.layoutRoot };
+        }
+
         this.inject = input.inject;
 
     }
@@ -67,8 +83,8 @@ class HtmlBuilder {
                     loader: 'posthtml-loader',
                     options: {
                         plugins: [
-                            require('posthtml-include')({ root: this.partialRoot }),
-                            require('posthtml-extend')({ root: this.layoutRoot })
+                            require('posthtml-include')(this.postHtmlInclude),
+                            require('posthtml-extend')(this.postHtmlExtend)
                         ]
                     }
                 }
