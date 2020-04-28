@@ -60,6 +60,12 @@ class HtmlBuilder {
     }
 
     webpackRules() {
+        const include = require('posthtml-include')({ root: this.partialRoot });
+        const extend = require('posthtml-extend')({
+            plugins: [ include ],
+            root: this.layoutRoot
+        });
+
         return {
             test: /\.html$/,
             use: [
@@ -67,8 +73,8 @@ class HtmlBuilder {
                     loader: 'posthtml-loader',
                     options: {
                         plugins: [
-                            require('posthtml-include')({ root: this.partialRoot }),
-                            require('posthtml-extend')({ root: this.layoutRoot })
+                            include,
+                            extend
                         ]
                     }
                 }
