@@ -19,16 +19,18 @@ class HtmlBuilder {
             this.output = input.output;
         }
 
+        let partialRoot;
         if (!input.partialRoot) {
-            this.partialRoot = './src/partials';
+            partialRoot = './src/partials';
         } else {
-            this.partialRoot = input.partialRoot;
+            partialRoot = input.partialRoot;
         }
 
+        let layoutRoot;
         if (!input.layoutRoot) {
-            this.layoutRoot = './src/layouts';
+            layoutRoot = './src/layouts';
         } else {
-            this.layoutRoot = input.layoutRoot;
+            layoutRoot = input.layoutRoot;
         }
 
         if (typeof input.minify === 'undefined') {
@@ -41,6 +43,37 @@ class HtmlBuilder {
             };
         } else {
             this.minify = input.minify;
+        }
+
+        if (typeof input.postHtmlConfig === 'undefined') {
+            this.includeConfig = {
+                root: partialRoot
+            }
+            this.extendConfig = {
+                root: layoutRoot
+            }
+        } else {
+            if (typeof input.postHtmlConfig.include === 'undefined') {
+                this.includeConfig = {
+                    root: partialRoot
+                }
+            } else {
+                this.includeConfig = {
+                    ...input.postHtmlConfig.include,
+                    root: partialRoot
+                }
+            }
+
+            if (typeof input.postHtmlConfig.extend === 'undefined') {
+                this.extendConfig = {
+                    root: layoutRoot
+                }
+            } else {
+                this.extendConfig = {
+                    ...input.postHtmlConfig.extend,
+                    root: layoutRoot
+                }
+            }
         }
 
         this.inject = input.inject;
@@ -60,11 +93,15 @@ class HtmlBuilder {
     }
 
     webpackRules() {
-        const include = require('posthtml-include')({ root: this.partialRoot });
-        const extend = require('posthtml-extend')({
-            plugins: [ include ],
-            root: this.layoutRoot
-        });
+        const include = require('posthtml-include')(this.includeConfig);
+
+        // Add posthtml-include to extend plugin list
+        if (typeof this.extendConfig.plugins === 'undefined') {
+            this.extendConfig.plugins = [ include ];
+        } else {
+            this.extendConfig.plugins.push(include);
+        }
+        const extend = require('posthtml-extend')(this.extendConfig);
 
         return {
             test: /\.html$/,
