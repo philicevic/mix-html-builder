@@ -36,6 +36,7 @@ Name | Type | Default | Description
 `output` | `{String}` | `'dist'` |  The folder where your output files should be saved
 `inject` | `{Boolean}` | `false` |  Whether or not your css and javascript files should automatically included in your output
 `minify` | `{Object}` | see [minify](#Minification) section |  An object with minify-options. See [minify](#Minification) for more information.
+`versioning` | `{Boolean}` | `false` | Enables cache busting
 `postHtmlConfig` | `{Object}` |  `{}` | You can configure posthtml-include and posthtml-extend. [More information](#PostHTML-Configuration)
 
 ### Include partials

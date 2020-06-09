@@ -78,6 +78,7 @@ class HtmlBuilder {
 
         this.inject = input.inject;
 
+        this.versioning = input.versioning;
     }
 
     dependencies() {
@@ -136,7 +137,8 @@ class HtmlBuilder {
                     filename: this.output + '/' + filename,
                     template: file,
                     inject: this.inject,
-                    minify: this.minify
+                    minify: this.minify,
+                    hash: this.versioning
                 })
             );
         });
