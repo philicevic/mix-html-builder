@@ -7,27 +7,27 @@ let HtmlWebpackPlugin = require('html-webpack-plugin');
 
 class HtmlBuilder {
     register(input = {}) {
-        if (!input.htmlRoot) {
+        if (typeof input.htmlRoot === 'undefined') {
             this.htmlRoot = './src/index.html';
         } else {
             this.htmlRoot = input.htmlRoot;
         }
 
-        if (!input.output) {
+        if (typeof input.output === 'undefined') {
             this.output = 'dist';
         } else {
             this.output = input.output;
         }
 
         let partialRoot;
-        if (!input.partialRoot) {
+        if (typeof input.partialRoot === 'undefined') {
             partialRoot = './src/partials';
         } else {
             partialRoot = input.partialRoot;
         }
 
         let layoutRoot;
-        if (!input.layoutRoot) {
+        if (typeof input.layoutRoot === 'undefined') {
             layoutRoot = './src/layouts';
         } else {
             layoutRoot = input.layoutRoot;
