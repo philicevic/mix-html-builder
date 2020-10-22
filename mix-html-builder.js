@@ -19,6 +19,12 @@ class HtmlBuilder {
             this.output = input.output;
         }
 
+        // Add trailing slash only if the value is not an empty string
+        // to use the value specified by the "setPublicPath" function
+        if(this.output.length > 0) {
+            this.output += this.output.endsWith('/') ? '' : '/';
+        }
+
         let partialRoot;
         if (typeof input.partialRoot === 'undefined') {
             partialRoot = './src/partials';
@@ -134,7 +140,7 @@ class HtmlBuilder {
             let filename = path.relative(htmlRootDir, file);
             Plugins.push(
                 new HtmlWebpackPlugin({
-                    filename: this.output + '/' + filename,
+                    filename: this.output + filename,
                     template: file,
                     inject: this.inject,
                     minify: this.minify,
