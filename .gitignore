@@ -1,2 +1,6 @@
 node_modules
+
+test/testproject/dist
+test/testproject/mix-manifest.json
+
 .idea
