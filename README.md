@@ -56,6 +56,15 @@ To do that, you can add a json inside the `locals` attribute as seen in the exam
     "author": "John Doe"
 }'></include>
 ```
+If you want you can also just pass the locals as a json string inside the include tag:
+```
+<h1>Headline</h1>
+<include src="text.html">
+{
+    "author": "John Doe"
+}
+</include>
+```
 Note that it will search for partials in `/src/partials` by default - you can change that by passing a `partialRoot`-option to `mix.html()` or you can just use a relative path in the include tag, like this:
 ```
 <h1>Headline</h1>
