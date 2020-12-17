@@ -114,7 +114,7 @@ Note that it will search for layouts in `/src/layouts` by default - you can chan
 `/src/layouts/layout.html`:
 ```
 <body>
-    <h1><block name="title" /></h1>
+    <h1><block name="title"></block></h1>
     <p class="content">
         I am quality content.
     </p>
