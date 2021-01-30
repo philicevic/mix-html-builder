@@ -33,7 +33,7 @@
     "posthtml-loader": "^2.0.1"
   },
   "peerDependencies": {
-    "laravel-mix": ">=3.0.0 <=6.0.0"
+    "laravel-mix": ">=3 <7"
   },
   "devDependencies": {
     "filename-regex": "^2.0.1",
