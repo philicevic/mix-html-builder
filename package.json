@@ -25,11 +25,11 @@
   },
   "dependencies": {
     "glob": "^7.1.6",
-    "glob-parent": "^5.1.1",
-    "html-webpack-plugin": "^4.5.0",
+    "glob-parent": "^5.1.2",
+    "html-webpack-plugin": "^4.5.2",
     "posthtml": "^0.15.1",
     "posthtml-extend": "^0.6.0",
-    "posthtml-include": "^1.6.0",
+    "posthtml-include": "^1.6.2",
     "posthtml-loader": "^2.0.1"
   },
   "peerDependencies": {
@@ -37,7 +37,8 @@
   },
   "devDependencies": {
     "filename-regex": "^2.0.1",
-    "laravel-mix": "^5.0.9",
-    "mocha": "^8.2.1"
+    "laravel-mix": "^6.0.13",
+    "mocha": "^8.3.1",
+    "postcss": "^8.2.8"
   }
 }
