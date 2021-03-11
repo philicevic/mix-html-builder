@@ -82,7 +82,7 @@ class HtmlBuilder {
             }
         }
 
-        this.inject = input.inject;
+        this.inject = input.inject ? input.inject : false;
 
         this.versioning = input.versioning;
     }
