@@ -4,7 +4,7 @@ const fs = require('fs');
 
 describe('Building html', function() {
     execSync(
-        "../../node_modules/webpack/bin/webpack.js --progress --hide-modules --display=none --config=../../node_modules/laravel-mix/setup/webpack.config.js",
+        "../../node_modules/.bin/webpack --progress --config=../../node_modules/laravel-mix/setup/webpack.config.js",
         {cwd: __dirname + "/testproject"},
         (error, stdout, stderr) => {
             if (error) {
