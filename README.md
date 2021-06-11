@@ -153,7 +153,7 @@ The default value of this field is the following object:
 
 ### PostHTML-Configuration
 
-You can configure `posthtml-include` and `posthtml-extend` with the `postHtmlConfig` option.
+You can configure `posthtml-include`, `posthtml-extend` and `posthtml-expressions` with the `postHtmlConfig` option.
 
 Example:
 
@@ -166,8 +166,14 @@ postHtmlConfig: {
     extend: {
         // Your posthtml-extend configuration goes here..
         encoding: 'utf-8'
+    },
+    expressions: {
+        locals: {
+            inProduction: mix.inProduction() ? 1 : 0,
+            seoTitle: 'Html Template'
+        }
     }
 }
 ```
 
-For more information about the available options check [posthtml-include](https://github.com/posthtml/posthtml-include#options) and [posthtml-extend](https://github.com/posthtml/posthtml-extend#options).
+For more information about the available options check [posthtml-include](https://github.com/posthtml/posthtml-include#options), [posthtml-extend](https://github.com/posthtml/posthtml-extend#options) and [posthtml-expressions](https://github.com/posthtml/posthtml-expressions#options).
