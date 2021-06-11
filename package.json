@@ -30,6 +30,7 @@
     "posthtml": "^0.15.1",
     "posthtml-extend": "^0.6.0",
     "posthtml-include": "^1.6.2",
+    "posthtml-expressions": "^1.7.1",
     "posthtml-loader": "^2.0.1"
   },
   "peerDependencies": {
@@ -37,8 +38,8 @@
   },
   "devDependencies": {
     "filename-regex": "^2.0.1",
-    "laravel-mix": "^6.0.13",
-    "mocha": "^8.3.1",
-    "postcss": "^8.2.8"
+    "laravel-mix": "^6.0.19",
+    "mocha": "^8.4.0",
+    "postcss": "^8.3.2"
   }
 }

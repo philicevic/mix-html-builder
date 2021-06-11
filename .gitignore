@@ -1,7 +1,9 @@
 node_modules
+/yarn.lock
 
 test/testproject/dist
 test/testproject/mix-manifest.json
+test/testproject-with-configuration/public
 
 .idea
 .ddev

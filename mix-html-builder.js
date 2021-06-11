@@ -80,6 +80,14 @@ class HtmlBuilder {
                     root: layoutRoot
                 }
             }
+
+            if (typeof input.postHtmlConfig.expressions === 'undefined') {
+                this.expressionsConfig = {}
+            } else {
+                this.expressionsConfig = {
+                    ...input.postHtmlConfig.expressions,
+                }
+            }
         }
 
         this.inject = input.inject ? input.inject : false;
@@ -110,6 +118,8 @@ class HtmlBuilder {
         }
         const extend = require('posthtml-extend')(this.extendConfig);
 
+        const expressions = require('posthtml-expressions')(this.expressionsConfig);
+
         return {
             test: /\.html$/,
             use: [
@@ -118,7 +128,8 @@ class HtmlBuilder {
                     options: {
                         plugins: [
                             include,
-                            extend
+                            extend,
+                            expressions
                         ]
                     }
                 }
