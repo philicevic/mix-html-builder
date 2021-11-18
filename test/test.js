@@ -27,6 +27,6 @@ describe('Building html', function() {
         } catch(e) {
             console.log('Error:', e.stack);
         }
-        assert.strictEqual(data, '<header><h1>Hello World! I\'m John!</h1></header>');
+        assert.strictEqual(data, '<header class="home"><h1>Hello World! I\'m John!</h1></header>');
     });
 });
