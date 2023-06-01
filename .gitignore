@@ -5,3 +5,4 @@ test/testproject/mix-manifest.json
 
 .idea
 .ddev
+.DS_Store
